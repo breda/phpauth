@@ -19,56 +19,47 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+# Getting started
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## System requirements
+You need to have these installed on your system:
+- PHP >= 7.2.0
+- BCMath PHP Extension
+- Ctype PHP Extension
+- JSON PHP Extension
+- Mbstring PHP Extension
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Installation depend on your system, but let's suppose you have an Ubuntu 18.04
+```
+sudo apt-get install php7.2-common php7.2-json php7.2-mbstring php7.2-xsl php7.2-xml php7.2-mysql php7.2-bcmath php7.2-cli php7.2-sqlite3
+```
+And make sure you have them enabled in your `php.ini`. 
 
-## Laravel Sponsors
+Next up, for quicker database setup, let's use SQLite.
+Create the DB with : `touch database/database.sqlite`
+And configure it in Laravel, in your `.env` file like so:
+```
+...
+...
+DB_CONNECTION=sqlite
+DB_DATABASE=/home/breda/truly/lab/phpauth-laravel/database/database.sqlite
+```
+Replace `DB_DATABASE` with the **full path** of your sqlite database file.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Next, run the mirations w/ seeds:
+```
+php artisan migrate
+php artisan db:seed
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+And start the dev web server:
+```
+php artisan serve
+```
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Visit: http://localhost:8000/login
